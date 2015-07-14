@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_subheader"
+        android:title="@string/navigation_subheader">
+        <menu>
+            <item
+                android:id="@+id/navigation_tech"
+                android:icon="@mipmap/ic_launcher"
+                android:title="@string/navigation_cat_tech"/>
+            <item
+                android:id="@+id/navigation_games"
+                android:icon="@mipmap/ic_launcher"
+                android:title="@string/navigation_cat_games"/>
+            <item
+                android:id="@+id/navigation_activity"
+                android:icon="@mipmap/ic_launcher"
+                android:title="@string/navigation_cat_activity"/>
+            <item
+                android:id="@+id/navigation_collections"
+                android:icon="@mipmap/ic_launcher"
+                android:title="@string/navigation_cat_collections"/>
+        </menu>
+    </item>
+</menu>

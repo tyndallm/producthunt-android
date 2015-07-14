@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ph_orange">#da552f</color>
+    <color name="ph_brown">#534540</color>
+    <color name="ph_green">#00b27f</color>
+    <color name="window_background">#FFF5F5F5</color>
+    <color name="ph_gray">#edf1f6</color>
+
+
+    <color name="ph_text_gray">#545557</color>
+</resources>
