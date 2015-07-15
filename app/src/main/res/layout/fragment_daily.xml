@@ -5,13 +5,16 @@
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/today"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="20dp"
         android:background="@color/ph_gray"
         android:textColor="@color/ph_text_gray"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:text="Today, July 13"/>
+        tools:text="Today, July 13"
+        android:text="Today,"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/productList"

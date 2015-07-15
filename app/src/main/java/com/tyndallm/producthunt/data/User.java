@@ -41,6 +41,10 @@ public class User implements Parcelable {
     public User() {
     }
 
+    public UserImage getImage() {
+        return image;
+    }
+
     protected User(Parcel in) {
         this.id = in.readString();
         this.name = in.readString();

@@ -1,14 +1,18 @@
 package com.tyndallm.producthunt.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.tyndallm.producthunt.R;
+import com.tyndallm.producthunt.activities.ProductActivity;
 import com.tyndallm.producthunt.data.ProductPost;
 
 import java.util.ArrayList;
@@ -34,20 +38,24 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
-        ProductPost currentProduct = items.get(position);
+        final ProductPost currentProduct = items.get(position);
         viewHolder.nameTextView.setText(currentProduct.getName());
         viewHolder.headlineTextView.setText(currentProduct.getTagline());
+        viewHolder.voteTextView.setText(String.valueOf(currentProduct.getVotesCount()));
+        Glide.with(viewHolder.userImageView.getContext())
+                .load(currentProduct.getUser().getImage().getOriginal().toString())
+                .fitCenter()
+                .into(viewHolder.userImageView);
 
-//        viewHolder.rootView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Context context = v.getContext();
-//                Intent intent = new Intent(context, CheeseDetailActivity.class);
-//                intent.putExtra(CheeseDetailActivity.EXTRA_NAME, holder.mBoundString);
-//
-//                context.startActivity(intent);
-//            }
-//        });
+        viewHolder.rootView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Context context = v.getContext();
+                Intent intent = new Intent(context, ProductActivity.class);
+                intent.putExtra(ProductActivity.ARG_PRODUCT, currentProduct);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -66,12 +74,16 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         public final View rootView;
         public final TextView nameTextView;
         public final TextView headlineTextView;
+        public final TextView voteTextView;
+        public final ImageView userImageView;
 
         public ViewHolder(View view) {
             super(view);
             rootView = view;
             nameTextView = (TextView) rootView.findViewById(R.id.name);
             headlineTextView = (TextView) rootView.findViewById(R.id.headline);
+            voteTextView = (TextView) rootView.findViewById(R.id.votes);
+            userImageView = (ImageView) rootView.findViewById(R.id.avatar);
         }
 
         @Override

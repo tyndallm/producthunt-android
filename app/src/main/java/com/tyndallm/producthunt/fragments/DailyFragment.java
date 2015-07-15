@@ -8,11 +8,16 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.tyndallm.producthunt.R;
 import com.tyndallm.producthunt.adapters.ProductListAdapter;
 import com.tyndallm.producthunt.api.ApiUtils;
 import com.tyndallm.producthunt.data.ProductResponse;
+
+import org.joda.time.DateTime;
+
+import java.util.Collections;
 
 import retrofit.Callback;
 import retrofit.RetrofitError;
@@ -38,6 +43,8 @@ public class DailyFragment extends Fragment implements Callback<ProductResponse>
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_daily, container, false);
         productList = (RecyclerView) view.findViewById(R.id.productList);
+        TextView todaysDate = (TextView) view.findViewById(R.id.today);
+        setupTodaysDate(todaysDate);
         setupRecyclerView(productList);
 
         return view;
@@ -53,6 +60,7 @@ public class DailyFragment extends Fragment implements Callback<ProductResponse>
     public void success(ProductResponse productResponse, Response response) {
         Log.d(TAG, "products retrieved: " + productResponse.getProductList().size());
         if (isAdded()) {
+            Collections.sort(productResponse.getProductList());
             ProductListAdapter productListAdapter = (ProductListAdapter) productList.getAdapter();
             productListAdapter.updateProducts(productResponse.getProductList());
         }
@@ -78,6 +86,11 @@ public class DailyFragment extends Fragment implements Callback<ProductResponse>
 //            throw new IllegalArgumentException("Your activity must implement the FragmentController interface");
 //        }
 //    }
+
+    private void setupTodaysDate(TextView todaysDate) {
+        DateTime now = DateTime.now();
+        todaysDate.setText("Today, " + now.toString("MMMM") + " " + now.toString("d"));
+    }
 
     private void setupRecyclerView(RecyclerView recyclerView) {
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));

@@ -28,6 +28,14 @@ public class ScreenshotUrl implements Parcelable {
     public ScreenshotUrl() {
     }
 
+    public String getSmallUrl() {
+        return smallUrl;
+    }
+
+    public String getLargeUrl() {
+        return largeUrl;
+    }
+
     protected ScreenshotUrl(Parcel in) {
         this.smallUrl = in.readString();
         this.largeUrl = in.readString();

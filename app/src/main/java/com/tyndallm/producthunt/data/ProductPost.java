@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-public class ProductPost implements Parcelable {
+public class ProductPost implements Comparable, Parcelable {
 
     private String id;
     private String name;
@@ -129,5 +129,10 @@ public class ProductPost implements Parcelable {
 
     public User getUser() {
         return user;
+    }
+
+    @Override
+    public int compareTo(Object compareProduct) {
+        return ((ProductPost) compareProduct).getVotesCount() - this.getVotesCount();
     }
 }
