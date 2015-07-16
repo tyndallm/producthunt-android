@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 import com.tyndallm.producthunt.R;
 import com.tyndallm.producthunt.activities.ProductActivity;
 import com.tyndallm.producthunt.data.ProductPost;
@@ -42,10 +42,11 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
         viewHolder.nameTextView.setText(currentProduct.getName());
         viewHolder.headlineTextView.setText(currentProduct.getTagline());
         viewHolder.voteTextView.setText(String.valueOf(currentProduct.getVotesCount()));
-        Glide.with(viewHolder.userImageView.getContext())
-                .load(currentProduct.getUser().getImage().getOriginal().toString())
-                .fitCenter()
-                .into(viewHolder.userImageView);
+        Picasso.with(viewHolder.userImageView.getContext()).load(currentProduct.getUser().getImage().getOriginal().toString()).into(viewHolder.userImageView);
+//        Glide.with(viewHolder.userImageView.getContext())
+//                .load(currentProduct.getUser().getImage().getOriginal().toString())
+//                .fitCenter()
+//                .into(viewHolder.userImageView);
 
         viewHolder.rootView.setOnClickListener(new View.OnClickListener() {
             @Override
