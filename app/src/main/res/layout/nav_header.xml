@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="bottom|center"
     android:background="?attr/colorPrimary"
-    android:drawableLeft="@drawable/producthunt_logo"
+    android:drawableLeft="@mipmap/ic_launcher"
     android:gravity="center_vertical|start"
     android:minHeight="100dp"
     android:paddingLeft="8dp"

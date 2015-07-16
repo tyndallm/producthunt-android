@@ -30,6 +30,7 @@ public class ProductActivity extends AppCompatActivity implements FragmentContro
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setTitle(title);
 
 
 //        CollapsingToolbarLayout collapsingToolbar =

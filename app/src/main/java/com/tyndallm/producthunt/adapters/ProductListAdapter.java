@@ -31,7 +31,6 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
 
     public ProductListAdapter(Context context) {
         this.context = context;
-        //context.getTheme().resolveAttribute(R.attr.selectableItemBackground, mTypedValue, true);
     }
 
     @Override
@@ -44,6 +43,7 @@ public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         runEnterAnimation(viewHolder.itemView, position);
+
         final ProductPost currentProduct = items.get(position);
         viewHolder.nameTextView.setText(currentProduct.getName());
         viewHolder.headlineTextView.setText(currentProduct.getTagline());
